@@ -74,9 +74,7 @@ export default {
             this.animate(el, this.enterStyles, done)
         },
         afterEnter(el) {
-            Object.keys(this.enterStyles).forEach(key => {
-                el.style.removeProperty(key);
-            })
+            el.removeAttribute("style");
         },
         leave(el, done) {
             if (this.leaveAtOnce) {
