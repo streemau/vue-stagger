@@ -2,6 +2,7 @@
     <transition-group
         :css="false"
         :tag="tag"
+        @after-enter="afterEnter"
         @before-enter="beforeEnter"
         @enter="enter"
         @leave="leave">
@@ -71,6 +72,11 @@ export default {
             }
 
             this.animate(el, this.enterStyles, done)
+        },
+        afterEnter(el) {
+            Object.keys(this.enterStyles).forEach(key => {
+                el.style.removeProperty(key);
+            })
         },
         leave(el, done) {
             if (this.leaveAtOnce) {
